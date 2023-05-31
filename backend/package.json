@@ -1,0 +1,63 @@
+{
+  "devDependencies": {
+    "@swc/cli": "^0.1.62",
+    "@swc/core": "^1.3.40",
+    "@types/cors": "^2.8.13",
+    "@types/express": "^4.17.17",
+    "@types/pg": "^8.6.6",
+    "@typescript-eslint/eslint-plugin": "^5.55.0",
+    "@typescript-eslint/parser": "^5.55.0",
+    "eslint": "^8.36.0",
+    "eslint-config-standard-with-typescript": "^34.0.1",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-n": "^15.6.1",
+    "eslint-plugin-promise": "^6.1.1",
+    "express": "^4.18.2",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.0",
+    "nodemon": "^2.0.21",
+    "prettier": "2.8.4",
+    "sequelize-cli": "^6.6.0",
+    "sequelize-typescript": "^2.1.5",
+    "swc": "^1.0.11",
+    "swc-node": "^1.0.0",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^4.9.5"
+  },
+  "scripts": {
+    "start dev": "nodemon",
+    "format": "prettier --write . --ignore-path .gitignore",
+    "lint": "eslint . --ignore-path .gitignore",
+    "fix-style": "npm run format && npm run lint",
+    "prepare": "husky install",
+    "build": "swc src -d dist --source-maps",
+    "start": "nodemon src/app.ts",
+    "setup": "ts-node src/utils/setup.ts"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "pg": "^8.10.0",
+    "pg-hstore": "^2.3.4",
+    "reflect-metadata": "^0.1.13",
+    "sequelize": "^6.29.3"
+  },
+  "lint-staged": {
+    "*.ts": "npm run lint"
+  },
+  "name": "back-end-part",
+  "description": "Backend part of the project",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Serghii29/back-end-part.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Serghii29/back-end-part/issues"
+  },
+  "homepage": "https://github.com/Serghii29/back-end-part#readme"
+}
