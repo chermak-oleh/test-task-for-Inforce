@@ -2,7 +2,7 @@
 /* eslint-disable import/no-named-as-default-member */
 /* eslint-disable import/no-named-as-default */
 import { configureStore } from '@reduxjs/toolkit';
-import apiProductsReducer from '../slices/apiProductsSlice';
+import apiProductsReducer from '../features/apiProductsSlice';
 
 export const store = configureStore({
   reducer: {

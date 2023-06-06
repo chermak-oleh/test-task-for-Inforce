@@ -1,6 +1,6 @@
 import React from 'react';
-import { useAppDispatch } from '../../store/hooks';
-import { deleteProduct } from '../../slices/apiProductsSlice';
+import { useAppDispatch } from '../../app/hooks';
+import { deleteProduct } from '../../features/apiProductsSlice';
 import { Product } from '../../types/product';
 
 type Props = {

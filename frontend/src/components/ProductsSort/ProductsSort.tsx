@@ -1,8 +1,8 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from 'react';
-import { Order } from '../../types/Order';
-import { useAppDispatch } from '../../store/hooks';
-import { loadProductsAsync, loadProductsByCount } from '../../slices/apiProductsSlice';
+import { Order } from '../../types/order';
+import { useAppDispatch } from '../../app/hooks';
+import { loadProductsAsync, loadProductsByCount } from '../../features/apiProductsSlice';
 
 export const ProductsSort: React.FC = () => {
   const [order, setOrder] = useState('Alphabetically');

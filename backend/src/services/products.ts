@@ -36,8 +36,10 @@ export const updateProduct = async (
   return data;
 };
 
-export const deleteProduct = async (id: number) => {
+export const deleteProduct = async (data: ProductType) => {
   await Product.destroy(
-    { where: { id: id } },
+    { where: { id: data.id } },
   );
+
+  return data;
 };

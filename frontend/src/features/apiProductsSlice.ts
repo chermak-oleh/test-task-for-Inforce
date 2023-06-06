@@ -5,10 +5,9 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import {
   createProduct, getApiProducts, getApiProductsByCount, removeProduct, updateProduct,
 } from '../api/getApiData';
-import { RootState } from '../store/store';
-import { Status } from '../types/Status';
+import { Status } from '../types/status';
 import { Product } from '../types/product';
-import { NewProduct } from '../types/NewProduct';
+import { NewProduct } from '../types/newProduct';
 
 export interface State {
   products: Product[],
@@ -50,11 +49,9 @@ export const addProductAsync = createAsyncThunk(
 export const deleteProduct = createAsyncThunk(
   'products/deleteProduct',
   async (product: Product) => {
-    // eslint-disable-next-line no-console
-    console.log(product.id);
-    await removeProduct(product);
+    const productToDelete: Product = await removeProduct(product);
 
-    return product.id;
+    return productToDelete;
   },
 );
 
@@ -74,6 +71,16 @@ export const productsSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
+      .addCase(deleteProduct.pending, (state) => {
+        state.status = Status.Loading;
+      })
+      .addCase(deleteProduct.fulfilled, (state) => {
+        state.status = Status.Succeeded;
+      })
+      .addCase(deleteProduct.rejected, (state, action) => {
+        state.products = state.products.filter(product => product.id !== action.meta.arg.id);
+        state.status = Status.Failed;
+      })
       .addCase(loadProductsAsync.pending, (state) => {
         state.status = Status.Loading;
       })
@@ -104,16 +111,6 @@ export const productsSlice = createSlice({
       .addCase(addProductAsync.rejected, (state) => {
         state.status = Status.Failed;
       })
-      .addCase(deleteProduct.pending, (state) => {
-        state.status = Status.Loading;
-      })
-      .addCase(deleteProduct.fulfilled, (state, action) => {
-        state.status = Status.Succeeded;
-        state.products = state.products.filter(product => product.id !== action.payload);
-      })
-      .addCase(deleteProduct.rejected, (state) => {
-        state.status = Status.Failed;
-      })
       .addCase(update.pending, (state) => {
         state.status = Status.Loading;
       })
@@ -134,5 +131,3 @@ export const productsSlice = createSlice({
 });
 
 export default productsSlice.reducer;
-
-export const selectProducts = (state: RootState) => state.apiProducts.products;

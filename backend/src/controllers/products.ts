@@ -77,14 +77,18 @@ export const removeProduct = async (
 ): Promise<void> => {
   const data = req.body;
 
+
   if (!data) {
     res.sendStatus(400);
   }
 
-  const { id } = data;
+  try {
+    const productToDelete = await deleteProduct(data);
 
-  await deleteProduct(id);
-
-  res.sendStatus(204);
+    res.statusCode = 204;
+    res.send(productToDelete);
+  } catch (error: any) {
+    global.console.log(error.message);
+  }
 };
   

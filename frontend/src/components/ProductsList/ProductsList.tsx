@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
-import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { loadProductsAsync } from '../../slices/apiProductsSlice';
+import { Status } from '../../types/status';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { loadProductsAsync } from '../../features/apiProductsSlice';
 import { ProductCard } from '../ProductCard/ProductCard';
 
 export const ProductsList: React.FC = React.memo(() => {
@@ -12,7 +13,7 @@ export const ProductsList: React.FC = React.memo(() => {
     dispatch(loadProductsAsync());
   }, []);
 
-  if (status === 'loading') {
+  if (status === Status.Loading) {
     return <p className="mt-3">Loading...</p>;
   }
 

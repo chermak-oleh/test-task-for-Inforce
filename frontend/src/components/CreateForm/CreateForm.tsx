@@ -1,8 +1,9 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from 'react';
-import { useAppDispatch } from '../../store/hooks';
-import { addProductAsync, update } from '../../slices/apiProductsSlice';
+import classNames from 'classnames';
+import { useAppDispatch } from '../../app/hooks';
+import { addProductAsync, update } from '../../features/apiProductsSlice';
 import { Product } from '../../types/product';
 
 type Props = {
@@ -20,7 +21,7 @@ export const CreateForm: React.FC<Props> = ({ editedProduct }) => {
   const [showNotification, setShowNotification] = useState(false);
   const dispatch = useAppDispatch();
 
-  const addNewProduct = async () => {
+  const addNewProduct = () => {
     const trimmedUrl = url.trim();
     const trimmedName = name.trim();
     const trimmedWeight = weight.trim();
@@ -122,7 +123,7 @@ export const CreateForm: React.FC<Props> = ({ editedProduct }) => {
     return (
       <div className="notification is-success">
         <button className="delete" type="button" onClick={onCloseNotification}></button>
-        <p>Product created successfully</p>
+        <p>{editedProduct ? 'Product updated successfully' : 'Product created successfully'}</p>
       </div>
     );
   }
@@ -217,7 +218,17 @@ export const CreateForm: React.FC<Props> = ({ editedProduct }) => {
         <span className="has-text-danger">Please fill in all required fields with valid data</span>
       )}
 
-      <button className="button is-info" type="submit">Add Product</button>
+      <button
+        className={classNames(
+          'button',
+          { 'is-info': !editedProduct },
+          { 'is-success': editedProduct },
+        )}
+        type="submit"
+      >
+        {editedProduct ? 'Update Product' : 'Add Product'}
+
+      </button>
     </form>
   );
 };

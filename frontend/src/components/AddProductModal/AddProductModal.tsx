@@ -1,6 +1,6 @@
 import React from 'react';
-import { CreateForm } from '../CreateForm';
 import { Product } from '../../types/product';
+import { CreateForm } from '../CreateForm';
 
 type Props = {
   onCloseButton: () => void;
@@ -13,7 +13,7 @@ export const AddProductModal: React.FC<Props> = ({ onCloseButton, product }) => 
       <div className="modal-background"></div>
       <div className="modal-card">
         <header className="modal-card-head">
-          <p className="modal-card-title">Create Product</p>
+          <p className="modal-card-title">{product ? 'Edit Product' : 'Create Product'}</p>
           <button className="delete" aria-label="close" type="button" onClick={onCloseButton}></button>
         </header>
         <section className="modal-card-body">
