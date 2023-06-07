@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Status } from '../../types/status';
+import { Status } from '../../types/Status';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { loadProductsAsync } from '../../features/apiProductsSlice';
 import { ProductCard } from '../ProductCard/ProductCard';

@@ -5,7 +5,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import {
   createProduct, getApiProducts, getApiProductsByCount, removeProduct, updateProduct,
 } from '../api/getApiData';
-import { Status } from '../types/status';
+import { Status } from '../types/Status';
 import { Product } from '../types/product';
 import { NewProduct } from '../types/newProduct';
 

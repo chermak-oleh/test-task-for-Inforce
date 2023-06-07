@@ -29,7 +29,6 @@
     "format": "prettier --write . --ignore-path .gitignore",
     "lint": "eslint . --ignore-path .gitignore",
     "fix-style": "npm run format && npm run lint",
-    "prepare": "husky install",
     "build": "swc src -d dist --source-maps",
     "start": "nodemon src/app.ts",
     "setup": "ts-node src/utils/setup.ts"

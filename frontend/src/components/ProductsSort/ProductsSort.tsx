@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from 'react';
-import { Order } from '../../types/order';
+import { Order } from '../../types/Order';
 import { useAppDispatch } from '../../app/hooks';
 import { loadProductsAsync, loadProductsByCount } from '../../features/apiProductsSlice';
 
