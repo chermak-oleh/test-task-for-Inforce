@@ -1,6 +1,4 @@
 /* eslint-disable import/no-cycle */
-/* eslint-disable import/no-named-as-default-member */
-/* eslint-disable import/no-named-as-default */
 import { configureStore } from '@reduxjs/toolkit';
 import apiProductsReducer from '../features/apiProductsSlice';
 

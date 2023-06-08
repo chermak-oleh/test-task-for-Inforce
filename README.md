@@ -6,7 +6,7 @@ This is test task for Inforce, made by Oleh Chermak.
 
 In this project you can create a new product, edit product, delete it and also update the existing product. 
 
- - Used Technolgies: HTML, CSS, Bulma, Typescript, React, Redux, Node.JS, Express, Sequalize ORM.
+ - Used Technolgies: HTML, CSS, Bulma, Typescript, React, React-Final-Form, Redux, Node.JS, Express, Sequalize ORM.
 
 ## Local development
 
