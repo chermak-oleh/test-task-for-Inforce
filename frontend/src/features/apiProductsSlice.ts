@@ -73,11 +73,11 @@ export const productsSlice = createSlice({
       .addCase(deleteProduct.pending, (state) => {
         state.status = Status.Loading;
       })
-      .addCase(deleteProduct.fulfilled, (state) => {
+      .addCase(deleteProduct.fulfilled, (state, action) => {
+        state.products = state.products.filter(product => product.id !== action.payload.id);
         state.status = Status.Succeeded;
       })
-      .addCase(deleteProduct.rejected, (state, action) => {
-        state.products = state.products.filter(product => product.id !== action.meta.arg.id);
+      .addCase(deleteProduct.rejected, (state) => {
         state.status = Status.Failed;
       })
       .addCase(loadProductsAsync.pending, (state) => {

@@ -85,7 +85,7 @@ export const removeProduct = async (
   try {
     const productToDelete = await deleteProduct(data);
 
-    res.statusCode = 204;
+    res.statusCode = 200;
     res.send(productToDelete);
   } catch (error: any) {
     global.console.log(error.message);
